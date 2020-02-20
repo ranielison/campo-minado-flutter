@@ -1,3 +1,4 @@
+import 'package:campo_minado/screens/campo_minado_app.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -10,18 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text('data'),
-      ),
+      home: CampoMinadoApp(),
     );
   }
 }
