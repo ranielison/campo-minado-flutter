@@ -13,7 +13,7 @@ class CampoMinadoApp extends StatefulWidget {
 
 class _CampoMinadoAppState extends State<CampoMinadoApp> {
   bool _venceu;
-  Tabuleiro _tabuleiro = Tabuleiro(linhas: 12, colunas: 12, qtdBombas: 3);
+  Tabuleiro _tabuleiro;
 
   void _reiniciar() {
     setState(() {
@@ -47,6 +47,25 @@ class _CampoMinadoAppState extends State<CampoMinadoApp> {
     });
   }
 
+  Tabuleiro _getTabuleiro(double largura, double altura) {
+    if (_tabuleiro == null) {
+      int qtdColunas = 15;
+      double tamanhoCampo = largura / qtdColunas;
+
+      int qtdLinhas = (altura / tamanhoCampo).floor();
+      print('linhas: ' + qtdLinhas.toString());
+      print('colunas: ' + qtdColunas.toString());
+      print('tamannho: ' + tamanhoCampo.toString());
+
+      _tabuleiro = Tabuleiro(
+        linhas: qtdLinhas,
+        colunas: qtdColunas,
+        qtdBombas: 15,
+      );
+    }
+    return _tabuleiro;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,11 +74,20 @@ class _CampoMinadoAppState extends State<CampoMinadoApp> {
         onReiniciar: _reiniciar,
       ),
       body: Container(
-          child: TabuleiroWidget(
-        tabuleiro: _tabuleiro,
-        onAbrir: _abrir,
-        onAlternarMarcacao: _alternarMarcacao,
-      )),
+        color: Colors.grey,
+        child: LayoutBuilder(
+          builder: (ctx, constraints) {
+            return TabuleiroWidget(
+              tabuleiro: _getTabuleiro(
+                constraints.maxWidth,
+                constraints.maxHeight,
+              ),
+              onAbrir: _abrir,
+              onAlternarMarcacao: _alternarMarcacao,
+            );
+          },
+        ),
+      ),
     );
   }
 }
