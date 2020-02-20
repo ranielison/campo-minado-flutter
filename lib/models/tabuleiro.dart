@@ -24,7 +24,7 @@ class Tabuleiro {
     _campos.forEach((c) => c.revelarBomba());
   }
 
-  _reiniciar() {
+  void reiniciar() {
     _campos.forEach((c) => c.reiniciar());
     _sortearMinas();
   }
