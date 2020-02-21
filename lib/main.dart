@@ -1,4 +1,5 @@
 import 'package:campo_minado/screens/campo_minado_app.dart';
+import 'package:campo_minado/screens/menu.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: CampoMinadoApp(),
+      home: Menu(),
     );
   }
 }

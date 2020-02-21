@@ -7,6 +7,9 @@ import 'package:campo_minado/models/tabuleiro.dart';
 import 'package:flutter/material.dart';
 
 class CampoMinadoApp extends StatefulWidget {
+  final int qtdBombas;
+
+  CampoMinadoApp({this.qtdBombas});
   @override
   _CampoMinadoAppState createState() => _CampoMinadoAppState();
 }
@@ -60,7 +63,7 @@ class _CampoMinadoAppState extends State<CampoMinadoApp> {
       _tabuleiro = Tabuleiro(
         linhas: qtdLinhas,
         colunas: qtdColunas,
-        qtdBombas: 15,
+        qtdBombas: this.widget.qtdBombas,
       );
     }
     return _tabuleiro;
